@@ -580,7 +580,7 @@ int *ToGodelArray(int *arr, int x, int i) {
         return arr;
     else {
         arr[i] = PrimDecpExp(x, i);
-        ToGodelArray(arr, x, P(i));
+        return ToGodelArray(arr, x, P(i));
     }
 }
 
