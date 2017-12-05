@@ -395,7 +395,7 @@ int AssiPrimMin(int p1) {
     if (Alp(IsPrim(p1)))
         return p1;
     else
-        AssiPrimMin(S(p1));
+        return AssiPrimMin(S(p1));
 }
 
 /**
