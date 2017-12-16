@@ -12,11 +12,11 @@
  * @param t
  * @return
  */
-int MinLeft(int* Z, int W, int t){
-    if(CantorL(Z[t]) == W)
+int MinLeft(int *Z, int W, int t) {
+    if (CantorL(Z[t]) == W)
         return t;
     else
-        return MinLeft(Z, W, t++);
+        return MinLeft(Z, W, ++t);
 }
 
 
@@ -25,12 +25,12 @@ int MinLeft(int* Z, int W, int t){
  * @param X
  * @return
  */
-int* Left(int* X){
-    int len = X[0];
-    int Y[len];
-    Y[0] = len;
+int *Left(int *X) {
+    int len = X[0] + 2;
+    int *Y = calloc((len), sizeof(int));
+    Y[0] = len - 1;
     Y[1] = 1;
-    for (int i = 2; i <= len; i++)
+    for (int i = 2; i < len; i++)
         Y[i] = X[i - 1];
     return Y;
 }
@@ -41,12 +41,12 @@ int* Left(int* X){
  * @param X
  * @return
  */
-int* Right(int* X){
-    int len = X[0];
-    int Y[len];
-    Y[0] = len;
-    Y[len - 1] = 1;
-    for (int i = 1; i <= len -1; i++)
+int *Right(int *X) {
+    int len = X[0] + 2;
+    int *Y = calloc((len), sizeof(int));
+    Y[0] = len - 1;
+    Y[len] = 1;
+    for (int i = 1; i <= len - 1; i++)
         Y[i] = X[i];
     return Y;
 }
@@ -58,10 +58,10 @@ int* Right(int* X){
  * @param X
  * @return
  */
-int Count(int t, int* X){
+int Count(int t, int *X) {
     int sum = 0;
     for (int i = 1; i <= X[0]; i++) {
-        if(X[i] == t)
+        if (X[i] == t)
             sum++;
     }
     return sum;
@@ -74,57 +74,60 @@ int Count(int t, int* X){
  * @param X  array 表示纸带的哥德尔数组
  * @return
  */
-int GeneralProgram(int* Z,int* X){
+int GeneralProgram(int *Z, int *X) {
     int V = 1;
     int I = 1;
     char s = 'A';
-    if(PROG(Z) == 0){
-        while(1){
-            switch(s){
+    if (PROG(Z) == 0) {
+        while (1) {
+            switch (s) {
                 case 'A':
-                    if(I == 0 | I > Z[0])
+                    if (I == 0 || I > Z[0])
                         s = 'G';
-                    else if(CantorR(Z[I]) == 1)
+                    else if (CantorR(Z[I]) == 1)
                         s = 'R';
-                    else if(CantorR(Z[I]) == 2)
+                    else if (CantorR(Z[I]) == 2)
                         s = 'L';
-                    else if(CantorR(Z[I]) == 3)
+                    else if (CantorR(Z[I]) == 3)
                         s = 'F';
-                    else if(CantorR(Z[I]) == 4)
+                    else if (CantorR(Z[I]) == 4)
                         s = 'B';
-                    else if(R(CantorR(Z[I]), 2) == 1)
+                    else if (R(CantorR(Z[I]), 2) == 1)
                         s = 'T';
-                    else if(X[V] == 2)
+                    else if (X[V] == 2)
                         s = 'C';
+                    else
+                        s = 'D';
                     break;
                 case 'D':
                     I++;
                     s = 'A';
                     break;
                 case 'C':
+//                    printf("%d\n", Z[I]);
                     I = MinLeft(Z, ((CantorR(Z[I]) - 3) / 2), 1);
                     s = 'A';
                     break;
                 case 'T':
-                    if(X[V] == 1)
+                    if (X[V] == 1)
                         s = 'A';
                     else
                         s = 'D';
                     break;
                 case 'B':
-                    if(X[V] != 1)
+                    if (X[V] != 1)
                         X[V]--;
                     s = 'D';
                     break;
                 case 'F':
-                    if(X[V] != 2)
+                    if (X[V] != 2)
                         X[V]++;
                     s = 'D';
                     break;
                 case 'L':
-                    if(V != 1)
+                    if (V != 1)
                         s = 'M';
-                    else{
+                    else {
                         X = Left(X);
                         s = 'D';
                     }
@@ -134,7 +137,7 @@ int GeneralProgram(int* Z,int* X){
                     s = 'D';
                     break;
                 case 'R':
-                    if(V != X[0])
+                    if (V != X[0])
                         s = 'S';
                     else
                         X = Right(X);
@@ -144,10 +147,10 @@ int GeneralProgram(int* Z,int* X){
                     s = 'D';
                     break;
                 case 'G':
-                    return Count(2, X) -1;
+                    return Count(2, X) - 1;
             }
         }
-    }else{
+    } else {
         return 0;
     }
 }

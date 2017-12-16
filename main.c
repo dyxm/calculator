@@ -60,8 +60,8 @@ int main() {
 //    printf("%d", Lt);
 //    int x[] = {6, 2, 2, 2, 2, 20, 2};
 //    printf("%d\n", PROG(x));
-    int z[] = {6, 2, 2, 14, 2, 2, 2}; // 2 * ³ÌÐò
-    int x[] = {5, 2, 2, 2, 2, 1}; // 3
+    int z[] = {6, 4, 20, 7, 44, 5, 14}; // (X - 1) ³ÌÐò
+    int x[] = {7, 2, 2, 2, 2, 2, 2, 1}; // 5
     int y = GeneralProgram(z, x);
     printf("%d\n", y);
 }

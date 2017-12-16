@@ -695,29 +695,29 @@ int CantorL(int z) {
 }
 
 
-int  AssiProgExit_1(int* x, int i, int j){
+int AssiProgExit_1(int *x, int i, int j) {
     if (j == 0)
         return Eq(CantorL(x[i]), 0);
     else
         return Mul(AssiProgExit_1(x, i, P(j)), Eq(CantorL(x[i]), CantorL(x[j])));
 }
 
-int  AssiProgExit_2(int* x, int i){
+int AssiProgExit_2(int *x, int i) {
     if (i == 0)
         return 1;
     else
-        return Mul(AssiProgExit_2(x, P(i)), And(AssiProgExit_1(x, i, P(i)),Neq(CantorL(x[i]), 0)));
+        return Mul(AssiProgExit_2(x, P(i)), And(AssiProgExit_1(x, i, P(i)), Neq(CantorL(x[i]), 0)));
 }
 
 
-int  AssiProgAny(int* x, int i){
-    if(i == 0)
+int AssiProgAny(int *x, int i) {
+    if (i == 0)
         return 0;
     else
-        return Add(AssiProgAny(x, P(i)), Or(Eq(i, 0),Neq(CantorR(x[i]), 0)));
+        return Add(AssiProgAny(x, P(i)), Or(Eq(i, 0), Neq(CantorR(x[i]), 0)));
 }
 
-int PROG(int* x){
+int PROG(int *x) {
 //    int a[] = {6, 2, 2, 2, 2, 2, 2};
 //    int *gArr = a;
 //    int *gArr = RealNumToGodelArray(x);
