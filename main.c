@@ -1,7 +1,8 @@
 /**
  * 作者:丁岳雄
  * 日期:2017-10-28 21:05:15
- * 功能：实现29个原始递归函数（假设所有的输入数据均为大于等于零的数）
+ * 功能：1、测试30个原始递归函数（假设所有的输入数据均为大于等于零的数）
+ *       2、测试通用程序
  */
 
 #include <stdio.h>
@@ -13,6 +14,9 @@
 
 // 测试
 int main() {
+    /*
+     * 30 个原始递归函数的测试
+     */
 //    printf("1、 3 + 4 等于：%d\n", Add(3, 4));
 //    printf("2、 3 x 4 等于：%d\n", Mul(3, 4));
 //    printf("3、 4 的阶乘等于：%d\n", Fac(4));
@@ -52,16 +56,20 @@ int main() {
 //    printf("28、 Cantor对角线上序号为 17 的元素小标右部等于：%d\n", CantorR(17));
 //    printf("29、 Cantor对角线上序号为 17 的元素小标左部等于：%d\n", CantorL(17));
 //
-//    printf("\n\n\n按任意键结束~\n\n");
-//    getch();
-//    return 0;
-//    int Lt = PrimDecpLgIndex(60);
-//    int *gArr = RealNumToGodelArray(60);
-//    printf("%d", Lt);
 //    int x[] = {6, 2, 2, 2, 2, 20, 2};
-//    printf("%d\n", PROG(x));
-    int z[] = {6, 4, 20, 7, 44, 5, 14}; // (X - 1) 程序
-    int x[] = {7, 2, 2, 2, 2, 2, 2, 1}; // 5
-    int y = GeneralProgram(z, x);
-    printf("%d\n", y);
+//    printf("30、 PROG(x),判断 x 是否为某个 P - T 函数的哥德尔数，如x = {6, 2, 2, 2, 2, 20, 2}，则 PROG（x）等于: %d\n", PROG(x));
+
+
+    /*
+     * 通用程序测试
+     */
+//    int z[] = {6, 4, 20, 7, 44, 5, 14}; // (X - 1) 程序
+//    int x[] = {7, 2, 2, 2, 2, 2, 2, 1}; // 5
+//    int y = GeneralProgram(z, x);
+//    printf("%d\n", y);
+
+
+    printf("\n\n\n按任意键结束~\n\n");
+    getch();
+    return 0;
 }
