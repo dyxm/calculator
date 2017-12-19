@@ -63,10 +63,11 @@ int main() {
     /*
      * 通用程序测试
      */
-//    int z[] = {6, 4, 20, 7, 44, 5, 14}; // (X - 1) 程序
-//    int x[] = {7, 2, 2, 2, 2, 2, 2, 1}; // 5
-//    int y = GeneralProgram(z, x);
-//    printf("%d\n", y);
+//    int P[] = {6, 4, 20, 7, 44, 5, 14}; // (X - 1) 程序
+    int S[] = {4, 4, 27, 9, 2}; // (X + 1) 程序
+    int x[] = {7, 2, 2, 2, 2, 2, 2, 1}; // 5
+    int y = GeneralProgram(S, x);
+    printf("%d\n", y);
 
 
     printf("\n\n\n按任意键结束~\n\n");
