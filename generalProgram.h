@@ -45,8 +45,8 @@ int *Right(int *X) {
     int len = X[0] + 2;
     int *Y = calloc((len), sizeof(int));
     Y[0] = len - 1;
-    Y[len] = 1;
-    for (int i = 1; i <= len - 1; i++)
+    Y[len - 1] = 1;
+    for (int i = 1; i < Y[0]; i++)
         Y[i] = X[i];
     return Y;
 }
@@ -61,6 +61,7 @@ int *Right(int *X) {
 int Count(int t, int *X) {
     int sum = 0;
     for (int i = 1; i <= X[0]; i++) {
+//        printf("%d ", X[i]);
         if (X[i] == t)
             sum++;
     }
@@ -104,13 +105,12 @@ int GeneralProgram(int *Z, int *X) {
                     s = 'A';
                     break;
                 case 'C':
-//                    printf("%d\n", Z[I]);
                     I = MinLeft(Z, ((CantorR(Z[I]) - 3) / 2), 1);
                     s = 'A';
                     break;
                 case 'T':
                     if (X[V] == 1)
-                        s = 'A';
+                        s = 'C';
                     else
                         s = 'D';
                     break;
